@@ -1,18 +1,29 @@
 
-/* ==================================
+/* =========================================
    FOR ELLY, WITH LOVE
-   A little digital world.
-================================== */
+   Dusty Navy & Ivory Edition
+========================================= */
 
 :root {
-  --cream: #faf6f2;
-  --white: #fffdfb;
-  --pink: #c58b99;
-  --rose: #ead4d7;
-  --dark-rose: #a66e7d;
-  --brown: #5d504c;
-  --muted: #988984;
-  --light: #f2e9e4;
+  --cream: #f8f6f0;
+  --white: #fffefa;
+
+  --blue-light: #e8edf3;
+  --blue-pale: #dce6ef;
+  --blue-soft: #c5d4e2;
+  --blue-muted: #91a8bf;
+  --blue: #526f8c;
+  --blue-dark: #385675;
+  --navy: #243b53;
+
+  --brown: #34485e;
+  --muted: #78899b;
+  --light: #edf1f5;
+
+  --border: #d6e0e9;
+  --shadow: rgba(36, 59, 83, 0.12);
+
+  --red-lily: #b83f48;
 }
 
 * {
@@ -20,6 +31,10 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+}
+
+html {
+  background: var(--cream);
 }
 
 body {
@@ -30,14 +45,15 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
   line-height: 1.25;
+  color: var(--navy);
 }
 
 h1 i, h2 i {
-  color: var(--pink);
+  color: var(--blue);
   font-weight: 400;
 }
 
@@ -53,9 +69,9 @@ button {
   display: none !important;
 }
 
-/* ==================================
+/* =========================================
    OPENING SCREEN
-================================== */
+========================================= */
 
 .opening {
   min-height: 100vh;
@@ -66,6 +82,14 @@ button {
   padding: 30px;
   position: relative;
   overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    #243b53,
+    #385675
+  );
+
+  color: white;
   transition: opacity .8s ease;
 }
 
@@ -75,7 +99,7 @@ button {
   position: absolute;
   width: 280px;
   height: 280px;
-  border: 1px solid #ead4d780;
+  border: 1px solid #dce6ef40;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -97,7 +121,7 @@ button {
 
 .flower-decoration {
   font-size: 35px;
-  color: var(--pink);
+  color: #dce6ef;
   margin-bottom: 20px;
   animation: flowerTurn 12s linear infinite;
 }
@@ -105,30 +129,40 @@ button {
 .eyebrow {
   font-size: 10px;
   letter-spacing: 3px;
-  color: var(--pink);
+  color: var(--blue);
   font-weight: 600;
+}
+
+.opening .eyebrow {
+  color: #dce6ef;
 }
 
 .opening h1 {
   font-size: clamp(3.5rem, 10vw, 6rem);
   margin: 20px 0;
+  color: white;
 }
 
-.pink, .logo span {
-  color: var(--pink);
+.opening h1 i {
+  color: #c5d4e2;
 }
 
 .opening p {
-  color: var(--muted);
+  color: #dce6ef;
   font-size: 14px;
+}
+
+.pink,
+.logo span {
+  color: var(--blue);
 }
 
 .main-button {
   margin-top: 35px;
   padding: 14px 30px;
-  border: 1px solid var(--pink);
+  border: 1px solid #dce6ef;
   background: transparent;
-  color: var(--brown);
+  color: white;
   border-radius: 50px;
   cursor: pointer;
   font-size: 13px;
@@ -136,54 +170,59 @@ button {
 }
 
 .main-button:hover {
-  background: var(--pink);
-  color: white;
+  background: white;
+  color: var(--navy);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px #c58b9930;
+  box-shadow: 0 10px 25px #00000020;
 }
 
 .main-button span {
-  color: var(--pink);
+  color: #c5d4e2;
   margin-left: 8px;
 }
 
 .main-button:hover span {
-  color: white;
+  color: var(--navy);
 }
 
 .tiny-note {
   margin-top: 50px;
   font-family: 'Caveat', cursive;
   font-size: 18px;
-  color: var(--muted);
+  color: #c5d4e2;
 }
 
 .corner-decoration {
   position: absolute;
   right: 10%;
   top: 15%;
-  color: var(--rose);
+  color: #91a8bf;
   font-size: 35px;
   animation: float 5s ease-in-out infinite;
 }
 
-/* ==================================
+/* =========================================
    NAVIGATION
-================================== */
+========================================= */
 
 .nav {
   display: flex;
   justify-content: space-between;
   padding: 24px 8%;
   align-items: center;
-  border-bottom: 1px solid #eaded780;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
 }
 
 .logo {
   text-decoration: none;
-  color: var(--brown);
+  color: var(--navy);
   font-family: 'Playfair Display', serif;
   font-size: 22px;
+}
+
+.logo span {
+  color: var(--blue);
 }
 
 .nav-note {
@@ -191,9 +230,18 @@ button {
   font-size: 11px;
 }
 
-/* ==================================
+.nav a {
+  color: var(--navy);
+  transition: color .3s ease;
+}
+
+.nav a:hover {
+  color: var(--blue-muted);
+}
+
+/* =========================================
    GENERAL SECTIONS
-================================== */
+========================================= */
 
 .section {
   padding: 110px 12%;
@@ -234,7 +282,7 @@ button {
 }
 
 .text-link {
-  color: var(--pink);
+  color: var(--blue);
   text-decoration: none;
   margin-top: 45px;
   font-size: 13px;
@@ -242,15 +290,16 @@ button {
 }
 
 .text-link:hover {
+  color: var(--navy);
   letter-spacing: 1px;
 }
 
-/* ==================================
+/* =========================================
    LOVE LETTER
-================================== */
+========================================= */
 
 .letter-section {
-  background: var(--light);
+  background: var(--blue-light);
 }
 
 .letter-card {
@@ -258,8 +307,8 @@ button {
   max-width: 650px;
   margin: auto;
   padding: clamp(30px, 7vw, 65px);
-  box-shadow: 0 15px 50px #5d504c0c;
-  border: 1px solid #ffffff;
+  box-shadow: 0 15px 50px var(--shadow);
+  border: 1px solid white;
   position: relative;
 }
 
@@ -268,19 +317,20 @@ button {
   position: absolute;
   right: 25px;
   top: 20px;
-  color: var(--rose);
+  color: var(--blue-soft);
   font-size: 24px;
 }
 
 .letter-date {
   font-size: 10px;
   letter-spacing: 2px;
-  color: var(--pink);
+  color: var(--blue);
 }
 
 .letter-card p {
   margin-top: 20px;
   font-size: 14px;
+  color: var(--brown);
 }
 
 .handwriting {
@@ -289,17 +339,17 @@ button {
 }
 
 .signature {
-  color: var(--pink);
+  color: var(--blue);
   text-align: right;
   margin-top: 40px !important;
 }
 
-/* ==================================
+/* =========================================
    PHOTO GALLERY
-================================== */
+========================================= */
 
-
-.photo-grid {
+.photo-grid,
+.gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 30px;
@@ -308,9 +358,10 @@ button {
 }
 
 .photo-card {
-  background: #fffdfb;
+  background: var(--white);
   padding: 12px 12px 20px;
-  box-shadow: 0 8px 25px #5d504c12;
+  box-shadow: 0 8px 25px var(--shadow);
+  border: 1px solid var(--border);
   border-radius: 4px;
   transform: rotate(-1deg);
   transition: transform .35s ease, box-shadow .35s ease;
@@ -323,33 +374,25 @@ button {
 
 .photo-card:hover {
   transform: translateY(-7px) rotate(0deg);
-  box-shadow: 0 15px 35px #5d504c20;
+  box-shadow: 0 15px 35px rgba(36, 59, 83, .18);
 }
-
 
 .photo-card img {
   display: block;
   width: 100%;
   height: 280px;
   object-fit: contain;
-  background: #f7f1ed;
+  background: #edf1f5;
   border-radius: 2px;
 }
-
 
 .photo-card figcaption {
   font-family: 'Caveat', cursive;
   font-size: 20px;
   line-height: 1.4;
-  color: #806b65;
+  color: var(--blue-dark);
   text-align: center;
   padding-top: 14px;
-}
-
-
-.photo-card:hover {
-  transform: rotate(0deg) translateY(-8px);
-  box-shadow: 0 15px 35px #5d504c18;
 }
 
 .photo-card:nth-child(2) {
@@ -363,29 +406,23 @@ button {
 
 .photo-placeholder {
   height: 210px;
-  background: var(--rose);
+  background: var(--blue-soft);
   display: grid;
   place-items: center;
   color: white;
   font-size: 35px;
 }
 
-.photo-card figcaption {
-  text-align: center;
-  font-family: 'Caveat', cursive;
-  font-size: 19px;
-  margin-top: 10px;
-}
-
-/* ==================================
+/* =========================================
    REASONS
-================================== */
+========================================= */
 
 .reasons {
-  background: var(--light);
+  background: var(--blue-light);
 }
 
-.reason-grid {
+.reason-grid,
+.reasons-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
@@ -393,7 +430,7 @@ button {
 
 .reason-card {
   background: var(--white);
-  border: 1px solid #eadcda;
+  border: 1px solid var(--border);
   padding: 25px;
   text-align: left;
   font: inherit;
@@ -403,35 +440,39 @@ button {
 }
 
 .reason-card:hover {
-  border-color: var(--pink);
+  border-color: var(--blue-muted);
+  background: #f2f6fa;
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px #5d504c0c;
+  box-shadow: 0 10px 25px var(--shadow);
 }
 
 .reason-card span {
   display: block;
-  color: var(--pink);
+  color: var(--blue);
   font-size: 11px;
   margin-bottom: 10px;
 }
 
 .reason-card b {
   float: right;
-  color: var(--pink);
+  color: var(--blue);
 }
 
 .reason-message {
   margin-top: 25px;
   min-height: 60px;
   text-align: center;
-  color: var(--pink);
+  color: var(--blue);
   font-family: 'Caveat', cursive;
   font-size: 25px;
+  transition: opacity .3s ease;
 }
 
-/* ==================================
-   ROSE BOUQUET
-================================== */
+
+/* =========================================
+   RED SPIDER LILY BOUQUET
+   Dusty Blue Transformation
+========================================= */
 
 .bouquet-section {
   text-align: center;
@@ -444,641 +485,7 @@ button {
   margin: 20px 0;
 }
 
-.bouquet {
-  margin: 35px auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-size: 55px;
-}
-
-.bouquet span {
-  display: inline-block;
-  animation: sway 3s ease-in-out infinite alternate;
-  transform-origin: bottom center;
-}
-
-.bouquet span:nth-child(even) {
-  animation-delay: .5s;
-}
-
-.bouquet span:nth-child(3) {
-  animation-delay: 1s;
-}
-
-.bouquet-section p {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* ==================================
-   MUSIC
-================================== */
-
-.music-section {
-  background: #f2e9e4;
-}
-
-.music-card {
-  max-width: 500px;
-  background: var(--white);
-  padding: 25px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid #eadcda;
-  box-shadow: 0 10px 30px #5d504c0c;
-}
-
-.music-icon {
-  width: 55px;
-  height: 55px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--rose);
-  color: var(--dark-rose);
-  font-size: 25px;
-}
-
-.music-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 20px;
-}
-
-.music-card p {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.music-button {
-  margin-left: auto;
-  text-decoration: none;
-  color: var(--pink);
-  border: 1px solid var(--pink);
-  border-radius: 30px;
-  padding: 9px 18px;
-  font-size: 12px;
-  transition: .3s;
-}
-
-.music-button:hover {
-  background: var(--pink);
-  color: white;
-}
-
-/* ==================================
-   FINAL MESSAGE
-================================== */
-
-.final-section {
-  background: #e9d7d5;
-  text-align: center;
-  padding: 120px 20px;
-}
-
-.final-section h2 {
-  font-size: 2.5rem;
-  margin: 30px 0;
-}
-
-.final-section h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  color: var(--dark-rose);
-}
-
-.final-section p {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.final-heart {
-  display: block;
-  color: var(--dark-rose);
-  font-size: 45px;
-  margin-top: 30px;
-  animation: heartbeat 2s ease-in-out infinite;
-}
-
-/* ==================================
-   FOOTER
-================================== */
-
-footer {
-  text-align: center;
-  padding: 35px 15px;
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
-}
-
-footer span {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-/* ==================================
-   ANIMATIONS
-================================== */
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes sway {
-  from {
-    transform: rotate(-8deg) translateY(0);
-  }
-
-  to {
-    transform: rotate(8deg) translateY(-8px);
-  }
-}
-
-@keyframes flowerTurn {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.15);
-  }
-
-  30% {
-    transform: scale(1);
-  }
-}
-
-/* ==================================
-   MOBILE RESPONSIVENESS
-================================== */
-
-@media (max-width: 650px) {
-
-  .section {
-    padding: 80px 7%;
-  }
-
-  .photo-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .photo-card:last-child {
-    grid-column: 1 / -1;
-    width: 70%;
-    margin: auto;
-  }
-
-  .photo-placeholder {
-    height: 160px;
-  }
-
-  .nav-note {
-    font-size: 9px;
-  }
-
-  .reason-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .music-card {
-    gap: 12px;
-    padding: 17px;
-  }
-
-  .bouquet {
-    font-size: 40px;
-  }
-}
-
-/* ==================================
-   ACCESSIBILITY
-================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation: none !important;
-    transition: none !important;
-  }
-
-}
-
-
-/* ==================================
-   EXTRA INTERACTIVE ANIMATIONS
-================================== */
-
-/* Floating rose petals */
-
-.petal-container {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 100;
-}
-
-.petal {
-  position: absolute;
-  top: -30px;
-  color: #c58b99;
-  animation: petalFall linear forwards;
-  pointer-events: none;
-}
-
-@keyframes petalFall {
-
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(50vh) translateX(30px)
-      rotate(180deg);
-  }
-
-  100% {
-    transform: translateY(110vh) translateX(-30px)
-      rotate(360deg);
-    opacity: 0;
-  }
-
-}
-
-/* Scroll reveal */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Interactive message */
-
-.reason-message {
-  transition: opacity .3s ease;
-}
-
-/* Reduced motion */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .petal-container {
-    display: none;
-  }
-
-}
-
-
-/* MEMORY GALLERY RESPONSIVE FIX */
-
-@media (max-width: 900px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-  }
-
-  .photo-card img {
-    height: 250px;
-  }
-}
-
-@media (max-width: 550px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .photo-card {
-    padding: 7px 7px 14px;
-  }
-
-  .photo-card img {
-    height: 180px;
-  }
-
-  .photo-card figcaption {
-    font-size: 17px;
-  }
-}
-
-
-/* ==================================
-   PHOTO LIGHTBOX
-================================== */
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(35, 27, 27, 0.94);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  padding: 30px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .3s ease, visibility .3s ease;
-}
-
-.lightbox.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 80%;
-  max-height: 90vh;
-  text-align: center;
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 75vh;
-  object-fit: contain;
-  border-radius: 4px;
-  box-shadow: 0 10px 50px #00000055;
-}
-
-.lightbox-caption {
-  color: #f8e9e5;
-  font-family: 'Caveat', cursive;
-  font-size: 26px;
-  margin: 18px 0 5px;
-}
-
-.lightbox-counter {
-  color: #d5bcb5;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.lightbox-close,
-.lightbox-prev,
-.lightbox-next {
-  background: transparent;
-  border: none;
-  color: #fff5f0;
-  cursor: pointer;
-  transition: color .2s ease, transform .2s ease;
-}
-
-.lightbox-close:hover,
-.lightbox-prev:hover,
-.lightbox-next:hover {
-  color: #e9a9a9;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 42px;
-}
-
-.lightbox-prev,
-.lightbox-next {
-  font-size: 32px;
-  padding: 15px;
-}
-
-.lightbox-prev:hover {
-  transform: translateX(-4px);
-}
-
-.lightbox-next:hover {
-  transform: translateX(4px);
-}
-
-@media (max-width: 600px) {
-  .lightbox {
-    gap: 5px;
-    padding: 15px;
-  }
-
-  .lightbox-content {
-    max-width: 78%;
-  }
-
-  .lightbox-image {
-    max-height: 65vh;
-  }
-
-  .lightbox-prev,
-  .lightbox-next {
-    font-size: 22px;
-    padding: 5px;
-  }
-
-  .lightbox-close {
-    top: 10px;
-    right: 15px;
-    font-size: 35px;
-  }
-
-  .lightbox-caption {
-    font-size: 21px;
-  }
-}
-
-
-/* ==================================
-   SECRET LETTER AND ENVELOPE
-================================== */
-
-.secret-section {
-  padding: 110px 20px;
-  text-align: center;
-  background: #f8f1ed;
-  overflow: hidden;
-}
-
-.secret-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 400;
-  color: #725b55;
-  margin: 25px 0 12px;
-}
-
-.envelope-instruction,
-.envelope-hint {
-  color: #927b73;
-  font-size: 14px;
-}
-
-.envelope-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin: 55px auto 20px;
-  padding: 0;
-}
-
-.envelope {
-  position: relative;
-  width: 220px;
-  height: 145px;
-  background: #d9b7a9;
-  box-shadow: 0 15px 35px #806b6530;
-  transition: transform .4s ease;
-}
-
-.envelope-button:hover .envelope {
-  transform: translateY(-8px);
-}
-
-.envelope-back {
-  position: absolute;
-  inset: 0;
-  background: #cda99b;
-}
-
-.envelope-letter {
-  position: absolute;
-  z-index: 1;
-  left: 15px;
-  right: 15px;
-  top: 12px;
-  height: 110px;
-  padding-top: 18px;
-  background: #fffaf5;
-  color: #896c63;
-  font-family: 'Caveat', cursive;
-  font-size: 24px;
-  transition: transform .7s ease;
-}
-
-.envelope-front {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: #e7c7b9;
-  clip-path: polygon(0 0, 50% 65%, 100% 0, 100% 100%, 0 100%);
-}
-
-.envelope-flap {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background: #d3ad9e;
-  clip-path: polygon(0 0, 100% 0, 50% 65%);
-  transform-origin: top;
-  transition: transform .6s ease;
-}
-
-.envelope-seal {
-  position: absolute;
-  z-index: 4;
-  left: 50%;
-  top: 57%;
-  transform: translate(-50%, -50%);
-  color: #fff8f4;
-  font-size: 25px;
-}
-
-.envelope-button.opened .envelope-flap {
-  transform: rotateX(180deg);
-}
-
-.envelope-button.opened .envelope-letter {
-  transform: translateY(-95px);
-}
-
-.secret-letter {
-  max-width: 600px;
-  margin: 55px auto 0;
-  padding: 45px;
-  background: #fffaf5;
-  box-shadow: 0 12px 35px #806b6515;
-  text-align: left;
-  color: #75625c;
-  line-height: 1.9;
-  animation: fadeUp .8s ease both;
-}
-
-.secret-letter h2 {
-  font-size: 32px;
-  margin: 20px 0;
-}
-
-.secret-letter p {
-  margin-bottom: 20px;
-}
-
-.letter-signature {
-  font-family: 'Caveat', cursive;
-  font-size: 24px;
-  color: #a27c70;
-  margin-top: 30px;
-}
-
-@media (max-width: 600px) {
-  .secret-letter {
-    padding: 25px;
-  }
-
-  .envelope {
-    width: 190px;
-    height: 125px;
-  }
-}
-
-
-/* ==================================
-   RED SPIDER LILY BOUQUET
-================================== */
+/* Original bouquet illustration */
 
 .spider-lily-bouquet {
   width: min(100%, 440px);
@@ -1094,311 +501,239 @@ footer span {
   filter: drop-shadow(0 10px 12px #8d24301a);
 }
 
+/* Original flower colors */
+
+.lily-petal {
+  fill: url(#lilyPetal);
+  stroke: #8e1733;
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+
+  /* Only color changes. No movement or scaling. */
+  transition:
+    fill 700ms ease,
+    stroke 700ms ease,
+    filter 700ms ease;
+}
+
+.back-petals .lily-petal:nth-child(odd) {
+  fill: #bd2948;
+}
+
+.front-petals .lily-petal {
+  fill: #e64d60;
+  stroke: #a91f3c;
+}
+
+.front-petals .lily-petal:nth-child(even) {
+  fill: #f16b72;
+}
+
+/* BLUE TRANSFORMATION */
+
+.lily-flower.bloomed .lily-petal {
+  fill: #7898b8 !important;
+  stroke: #385675 !important;
+  filter: drop-shadow(0 0 4px rgba(120, 152, 184, 0.3));
+}
+
+/* Stamens */
+
+.lily-stamens path {
+  fill: none;
+  stroke: #d85b61;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  transition: stroke 700ms ease;
+}
+
+.lily-flower.bloomed .lily-stamens path {
+  stroke: #a8c5df;
+}
+
+/* Golden tips */
+
+.stamen-tips circle {
+  fill: #e8bd79;
+  stroke: #9c603f;
+  stroke-width: 0.8;
+}
+
+.lily-flower.bloomed .stamen-tips circle {
+  fill: #e8d5a8;
+}
+
+/* Flower center stays exactly in place */
+
+.flower-core {
+  fill: url(#lilyCenter);
+  stroke: #8e4d38;
+  stroke-width: 1;
+  transition: fill 700ms ease;
+}
+
+.lily-flower.bloomed .flower-core {
+  fill: #e8d5a8;
+}
+
+/* Interaction */
+
+.lily-flower {
+  cursor: pointer;
+  outline: none;
+}
+
+.lily-flower:hover .lily-petal {
+  filter: brightness(1.08);
+}
+
+.lily-flower:focus-visible .flower-head {
+  filter: drop-shadow(0 0 8px rgba(120, 152, 184, 0.6));
+}
+
+/* Messages */
+
+.flower-message {
+  position: relative;
+  max-width: 440px;
+  min-height: 95px;
+  margin: 0 auto 12px;
+  padding: 18px 25px;
+  text-align: center;
+  background: rgba(232, 237, 243, 0.55);
+  border: 1px solid rgba(82, 111, 140, 0.18);
+  border-radius: 16px;
+}
+
+.flower-message-label {
+  display: block;
+  color: var(--blue);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  margin-bottom: 9px;
+}
+
+.flower-message p {
+  color: var(--blue-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Progress dots */
+
+.garden-progress {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  margin: 20px auto;
+}
+
+.garden-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd3dc;
+  transition: background 300ms ease;
+}
+
+.garden-dot.active {
+  background: #7898b8;
+}
+
+/* Final message */
+
+.garden-final-message {
+  max-width: 480px;
+  margin: 25px auto;
+  color: var(--blue-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: center;
+  animation: finalBloom 1s ease both;
+}
+
+@keyframes finalBloom {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flower note */
+
 .spider-lily-note {
   font-family: 'Caveat', cursive;
   font-size: 21px;
-  color: #a05b61;
-  margin-top: 12px;
+  color: var(--blue);
+  margin-top: 25px;
+  line-height: 1.9;
 }
+
+/* Original floating animation */
 
 @keyframes lilyFloat {
   0%, 100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-8px);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Mobile */
+
+@media (max-width: 600px) {
   .spider-lily-bouquet {
-    animation: none;
-  }
-}
-
-
-/* =========================
-   MUSIC PLAYER
-========================= */
-
-.music-card {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  width: min(100%, 520px);
-  margin: 45px auto 20px;
-  padding: 28px;
-  background: #f8f0e9;
-  border: 1px solid #eadbd2;
-  border-radius: 18px;
-  text-align: left;
-  box-shadow: 0 12px 35px #6e3d3210;
-}
-
-.vinyl-container {
-  flex-shrink: 0;
-}
-
-.vinyl {
-  width: 105px;
-  height: 105px;
-  border-radius: 50%;
-  background:
-    repeating-radial-gradient(
-      circle,
-      #292323 0px,
-      #292323 2px,
-      #383030 3px,
-      #292323 4px
-    );
-  display: grid;
-  place-items: center;
-  box-shadow: 0 5px 15px #00000025;
-}
-
-.vinyl-center {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: #a64e57;
-  color: #fff4ee;
-  display: grid;
-  place-items: center;
-  font-size: 17px;
-}
-
-.vinyl-container.playing {
-  animation: vinylSpin 4s linear infinite;
-}
-
-@keyframes vinylSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.music-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.music-info h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 23px;
-  color: #493632;
-  margin: 0 0 4px;
-}
-
-.music-info p {
-  font-size: 13px;
-  color: #967b72;
-  margin: 0;
-}
-
-.music-progress-container {
-  margin-top: 20px;
-}
-
-#musicProgress {
-  width: 100%;
-  height: 4px;
-  accent-color: #a64e57;
-  cursor: pointer;
-}
-
-.music-time {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #967b72;
-  margin-top: 5px;
-}
-
-.music-controls {
-  margin-top: 14px;
-}
-
-.music-button {
-  border: none;
-  border-radius: 30px;
-  padding: 10px 22px;
-  background: #a64e57;
-  color: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.music-button:hover {
-  background: #843b45;
-  transform: translateY(-2px);
-}
-
-.music-note {
-  font-family: 'Caveat', cursive;
-  font-size: 21px;
-  color: #a05b61;
-  margin-top: 15px;
-}
-
-@media (max-width: 480px) {
-  .music-card {
-    gap: 16px;
-    padding: 20px 15px;
-  }
-
-  .vinyl {
-    width: 75px;
-    height: 75px;
-  }
-
-  .music-info h3 {
-    font-size: 20px;
-  }
-}
-
-
-/* FLOATING LYRICS */
-
-.floating-lyrics {
-  position: fixed;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  width: min(90%, 700px);
-  z-index: 9999;
-  text-align: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.floating-lyrics.visible {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-#lyricText {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(16px, 2.5vw, 23px);
-  font-style: italic;
-  line-height: 1.5;
-  color: #a64e57;
-  text-shadow: 0 1px 8px #fff4ee;
-}
-
-@media (max-width: 480px) {
-  .floating-lyrics {
-    top: 18px;
-    width: 92%;
-  }
-}
-
-
-/* =========================
-   MOBILE OPTIMIZATION
-========================= */
-
-@media screen and (max-width: 768px) {
-
-  body {
-    overflow-x: hidden;
     width: 100%;
+    max-width: 440px;
   }
 
-  .section {
-    width: 100%;
-    padding: 65px 22px;
+  .flower-message {
+    margin-left: 12px;
+    margin-right: 12px;
+    padding: 16px;
   }
 
-  h1 {
-    font-size: clamp(38px, 10vw, 55px);
-    line-height: 1.15;
+  .flower-message p {
+    font-size: 0.95rem;
   }
-
-  h2 {
-    font-size: clamp(30px, 8vw, 42px);
-    line-height: 1.2;
-  }
-
-  p {
-    line-height: 1.75;
-  }
-
-  /* Navigation */
-
-  nav {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  nav a {
-    font-size: 11px;
-  }
-
-  /* Photo gallery */
-
-  .gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .photo-card img {
-    width: 100%;
-    height: 190px;
-    object-fit: contain;
-  }
-
-  /* Music player */
-
-  .music-card {
-    width: 100%;
-    max-width: 100%;
-    gap: 14px;
-    padding: 18px 14px;
-  }
-
-  /* Reasons */
-
-  .reasons-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Secret letter */
-
-  .secret-letter {
-    width: 100%;
-    padding: 25px 18px;
-  }
-
 }
 
-/* Smaller phones */
+/* Hide invisible flower click areas */
+.flower-hitbox {
+  fill: transparent !important;
+  stroke: none !important;
+  pointer-events: all;
+}
 
-@media screen and (max-width: 380px) {
+/* RESTORE SPIDER LILY LEAVES AND STEMS */
 
-  .section {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+.garden-leaves path,
+.garden-leaves polygon,
+.garden-leaves ellipse {
+  fill: #7898a0 !important;
+  stroke: #385675 !important;
+  stroke-width: 1.2;
+}
 
-  .gallery {
-    gap: 8px;
-  }
+.garden-stems path,
+.garden-stems line {
+  fill: none !important;
+  stroke: #526f75 !important;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
 
-  .photo-card img {
-    height: 155px;
-  }
-
-  .vinyl {
-    width: 65px;
-    height: 65px;
-  }
-
-  .music-info h3 {
-    font-size: 18px;
-  }
-
+/* Keep flower click areas invisible */
+.flower-hitbox {
+  fill: transparent !important;
+  stroke: none !important;
+  pointer-events: all;
 }
