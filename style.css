@@ -803,46 +803,115 @@ button {
 }
 
 
+
 /* =========================================
-   MOBILE LAYOUT AND SECRET ENVELOPE REPAIR
+   FINAL MESSAGE
 ========================================= */
 
-html,
-body {
+.final-section {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-#mainContent {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.section,
-.secret-section,
-.final-section,
-footer {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.secret-section {
+  min-height: 75vh;
+  padding: 110px 24px;
+  background: linear-gradient(
+    145deg,
+    #243b53,
+    #385675
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 90px 20px;
+  position: relative;
+  overflow: hidden;
 }
+
+.final-section .eyebrow {
+  color: #c5d4e2;
+}
+
+.final-section h2 {
+  color: #fffefa;
+  font-size: clamp(2.3rem, 6vw, 3.5rem);
+  margin: 25px 0;
+}
+
+.final-section h1 {
+  color: #fffefa;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin: 10px 0 25px;
+  max-width: 800px;
+}
+
+.final-section h1 i {
+  color: #c5d4e2;
+}
+
+.final-section p {
+  color: #dce6ef;
+  font-size: 14px;
+  max-width: 400px;
+}
+
+.final-heart {
+  display: block;
+  color: #c5d4e2;
+  font-size: 40px;
+  margin-top: 35px;
+  animation: heartPulse 2s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+
+/* =========================================
+   SECRET LETTER SECTION
+========================================= */
+
+.secret-section {
+  width: 100%;
+  padding: 110px 24px;
+  background: #e8edf3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.secret-section > h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 22px 0;
+}
+
+.envelope-instruction {
+  color: #78899b;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+/* =========================================
+   ENVELOPE
+========================================= */
 
 .envelope-button {
   display: block;
-  margin: 35px auto;
+  width: 220px;
+  height: 165px;
+  margin: 45px auto 20px;
+  padding: 0;
   border: none;
   background: transparent;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .envelope {
@@ -850,140 +919,249 @@ footer {
   width: 200px;
   height: 135px;
   margin: auto;
-  perspective: 800px;
-}
-
-.envelope-back,
-.envelope-front,
-.envelope-flap,
-.envelope-letter,
-.envelope-seal {
-  position: absolute;
+  perspective: 900px;
+  filter: drop-shadow(0 12px 15px rgba(36, 59, 83, .15));
 }
 
 .envelope-back {
+  position: absolute;
   inset: 0;
-  background: #dce6ef;
-  border: 1px solid #91a8bf;
+  background: #91a8bf;
+  border-radius: 4px;
   z-index: 1;
 }
 
 .envelope-letter {
-  width: 85%;
-  height: 85%;
-  left: 7.5%;
+  position: absolute;
+  width: 84%;
+  height: 90%;
+  left: 8%;
   top: 5%;
-  display: grid;
-  place-items: center;
   background: #fffefa;
   color: #385675;
-  font-family: "Caveat", cursive;
-  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Caveat', cursive;
+  font-size: 23px;
+  box-shadow: 0 2px 8px rgba(36, 59, 83, .12);
   z-index: 2;
-  transition: transform .7s ease;
+  transition: transform .8s ease;
 }
 
 .envelope-front {
+  position: absolute;
   inset: 0;
   background: #c5d4e2;
-  clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
   z-index: 3;
 }
 
 .envelope-flap {
+  position: absolute;
   inset: 0;
-  background: #91a8bf;
-  clip-path: polygon(0 0, 100% 0, 50% 60%);
-  transform-origin: top;
-  transition: transform .6s ease;
+  background: #7898b8;
+  clip-path: polygon(0 0, 100% 0, 50% 62%);
+  transform-origin: top center;
+  transition: transform .7s ease;
   z-index: 4;
 }
 
 .envelope-seal {
-  left: 50%;
+  position: absolute;
   top: 48%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #385675;
   color: #fffefa;
-  font-size: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
   z-index: 5;
+  transition: opacity .3s ease;
 }
+
+/* Opening animation */
 
 .envelope-button.opened .envelope-flap {
   transform: rotateX(180deg);
-  z-index: 0;
+  z-index: 1;
 }
 
 .envelope-button.opened .envelope-letter {
-  transform: translateY(-65px);
+  transform: translateY(-75px);
 }
 
+.envelope-button.opened .envelope-seal {
+  opacity: 0;
+}
+
+.envelope-button:hover .envelope {
+  transform: translateY(-5px);
+}
+
+.envelope {
+  transition: transform .3s ease;
+}
+
+.envelope-hint {
+  color: #526f8c;
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+  margin-top: 5px;
+}
+
+
+/* =========================================
+   SECRET LETTER PAPER
+========================================= */
+
 .secret-letter {
+  display: block;
   width: min(100%, 650px);
-  margin: 35px auto 0;
-  padding: 35px;
+  margin: 40px auto 0;
+  padding: 55px;
   background: #fffefa;
   border: 1px solid #d6e0e9;
   box-shadow: 0 15px 50px rgba(36, 59, 83, .12);
   text-align: left;
+  position: relative;
+  animation: letterAppear .9s ease both;
+}
+
+.secret-letter .eyebrow {
+  display: block;
+  text-align: center;
 }
 
 .secret-letter h2 {
+  font-size: 2rem;
   text-align: center;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .secret-letter p {
-  margin: 18px 0;
-  line-height: 1.8;
   color: #34485e;
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 20px 0;
 }
 
 .secret-letter .letter-signature {
   text-align: right;
-  font-family: "Caveat", cursive;
-  font-size: 21px;
+  font-family: 'Caveat', cursive;
+  font-size: 23px;
   color: #526f8c;
+  margin-top: 35px;
 }
 
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  width: 100%;
+  padding: 35px 20px;
+  background: #243b53;
+  color: #e8edf3;
+  text-align: center;
+  font-size: 13px;
+  line-height: 2;
+}
+
+footer span {
+  color: #91a8bf;
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+}
+
+
+/* =========================================
+   MOBILE: FINAL SECTIONS
+========================================= */
+
 @media (max-width: 600px) {
-  .section {
-    padding: 75px 20px;
+
+  .final-section {
+    min-height: 65vh;
+    padding: 85px 22px;
+    text-align: center;
+  }
+
+  .final-section h2 {
+    font-size: 2.3rem;
+  }
+
+  .final-section h1 {
+    font-size: 2rem;
+    line-height: 1.35;
+  }
+
+  .final-section p {
+    font-size: 13px;
   }
 
   .secret-section {
-    padding: 75px 18px;
-  }
-
-  .secret-letter {
-    padding: 24px 18px;
-  }
-
-  .secret-letter p {
-    font-size: 14px;
-  }
-
-  .secret-letter .letter-signature {
-    font-size: 19px;
-  }
-
-  .nav {
-    padding: 18px 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    padding: 80px 18px;
     text-align: center;
   }
 
-  .nav-note {
-    width: 100%;
+  .secret-section > h2 {
+    font-size: 2rem;
   }
 
-  .hero,
-  .section-heading,
-  .bouquet-section,
-  .music-section,
-  .final-section {
+  .envelope-button {
+    margin: 40px auto 20px;
+  }
+
+  .secret-letter {
+    width: 100%;
+    max-width: 100%;
+    margin: 35px auto 0;
+    padding: 28px 20px;
+    text-align: left;
+  }
+
+  .secret-letter h2 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .secret-letter p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .secret-letter .letter-signature {
+    font-size: 20px;
+  }
+
+  footer {
+    padding: 30px 18px;
     text-align: center;
   }
 }
 
+/* REMOVE THE PHOTO LIGHTBOX */
+.lightbox {
+  display: none !important;
+}
+
+.photo-card img {
+  cursor: default !important;
+}
