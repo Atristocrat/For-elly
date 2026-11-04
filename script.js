@@ -476,3 +476,98 @@ music.addEventListener("timeupdate", updateFloatingLyrics);
 music.addEventListener("play", updateFloatingLyrics);
 music.addEventListener("pause", updateFloatingLyrics);
 music.addEventListener("seeked", updateFloatingLyrics);
+
+
+/* ==========================================
+   INTERACTIVE SPIDER LILY GARDEN
+========================================== */
+
+const lilyGarden = document.getElementById("lilyGarden");
+const lilyFlowers = document.querySelectorAll(".lily-flower");
+const flowerMessageText = document.getElementById("flowerMessageText");
+const gardenDots = document.querySelectorAll(".garden-dot");
+const gardenFinalMessage = document.getElementById("gardenFinalMessage");
+
+const flowerMessages = [
+  "Even on ordinary days, you have a way of making things feel a little more beautiful. ♡",
+  "I hope you never forget how lovely you are, even on the days you don't feel that way.",
+  "If I could give you flowers every day, I'd still find a reason to bring you one more."
+];
+
+const openedFlowers = new Set();
+
+/* FLOWER INTERACTIONS */
+
+function openLilyFlower(flower) {
+  const index = Number(flower.dataset.flower);
+
+  if (openedFlowers.has(index)) {
+    flowerMessageText.textContent = flowerMessages[index];
+    return;
+  }
+
+  openedFlowers.add(index);
+  flower.classList.add("bloomed");
+
+  flowerMessageText.textContent = flowerMessages[index];
+
+  if (gardenDots[index]) {
+    gardenDots[index].classList.add("active");
+  }
+
+  if (openedFlowers.size === 3) {
+    gardenFinalMessage.classList.remove("hidden");
+  }
+}
+
+lilyFlowers.forEach((flower) => {
+  flower.addEventListener("click", () => {
+    openLilyFlower(flower);
+  });
+
+  flower.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLilyFlower(flower);
+    }
+  });
+});
+
+/* DRAG TO ROTATE */
+
+if (lilyGarden) {
+  let dragging = false;
+  let previousX = 0;
+  let rotationY = 0;
+  let rotationX = 5;
+
+  lilyGarden.addEventListener("pointerdown", (event) => {
+    dragging = true;
+    previousX = event.clientX;
+    lilyGarden.classList.add("dragging");
+  });
+
+  document.addEventListener("pointermove", (event) => {
+    if (!dragging) return;
+
+    const movementX = event.clientX - previousX;
+
+    rotationY += movementX * 0.65;
+    rotationY = Math.max(-50, Math.min(50, rotationY));
+
+    lilyGarden.style.transform =
+      `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+    previousX = event.clientX;
+  });
+
+  document.addEventListener("pointerup", () => {
+    dragging = false;
+    lilyGarden.classList.remove("dragging");
+  });
+
+  document.addEventListener("pointercancel", () => {
+    dragging = false;
+    lilyGarden.classList.remove("dragging");
+  });
+}
