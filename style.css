@@ -737,3 +737,67 @@ button {
   stroke: none !important;
   pointer-events: all;
 }
+
+
+
+/* =========================================
+   OPENING SCREEN VISIBILITY FIX
+========================================= */
+
+#mainContent.hidden {
+  display: none !important;
+}
+
+#opening.hidden {
+  display: none !important;
+}
+
+#opening {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+
+/* =========================================
+   MOBILE GALLERY REPAIR
+========================================= */
+
+@media (max-width: 600px) {
+  .photo-grid,
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    grid-auto-rows: auto;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .photo-card,
+  .photo-card:nth-child(even),
+  .photo-card:nth-child(2) {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    align-self: start;
+    margin: 0;
+    padding: 8px 8px 14px;
+    transform: none;
+  }
+
+  .photo-card img {
+    display: block;
+    width: 100%;
+    height: 165px;
+    object-fit: contain;
+  }
+
+  .photo-card figcaption {
+    min-height: 0;
+    font-size: 16px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    padding-top: 10px;
+  }
+}
