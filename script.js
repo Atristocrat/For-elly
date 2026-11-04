@@ -1,73 +1,90 @@
 
-/* ==================================
+/* =========================================
    FOR ELLY, WITH LOVE
-   Interactive experience
-================================== */
+   Clean Interactive Experience
+========================================= */
 
-// 1. OPENING SCREEN
+
+/* =========================================
+   1. OPENING SCREEN
+========================================= */
 
 const openButton = document.getElementById("openButton");
 const opening = document.getElementById("opening");
 const mainContent = document.getElementById("mainContent");
+const music = document.getElementById("backgroundMusic");
 
-openButton.addEventListener("click", () => {
-      const backgroundMusic = document.getElementById("backgroundMusic");
+let websiteOpened = false;
 
-  backgroundMusic.volume = 0.35;
+if (openButton && opening && mainContent) {
+  openButton.addEventListener("click", () => {
+    if (websiteOpened) return;
+    websiteOpened = true;
 
-  backgroundMusic.play().catch(error => {
-    console.log("Music could not start:", error);
+    if (music) {
+      music.volume = 0.35;
+      music.play().catch(error => {
+        console.warn("Music could not start:", error);
+      });
+    }
+
+    opening.style.opacity = "0";
+
+    setTimeout(() => {
+      opening.classList.add("hidden");
+      mainContent.classList.remove("hidden");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      startPetals();
+    }, 800);
   });
-  opening.style.opacity = "0";
-
-  setTimeout(() => {
-    opening.classList.add("hidden");
-    mainContent.classList.remove("hidden");
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-    startPetals();
-  }, 800);
-});
+}
 
 
-// 2. FLOATING ROSE PETALS
+/* =========================================
+   2. FLOATING FLOWER PETALS
+========================================= */
+
+let petalsStarted = false;
 
 function startPetals() {
-  const petalContainer = document.createElement("div");
-  petalContainer.className = "petal-container";
-  document.body.appendChild(petalContainer);
+  if (petalsStarted) return;
+  petalsStarted = true;
 
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const container = document.createElement("div");
+  container.className = "petal-container";
+  document.body.appendChild(container);
 
-  if (reducedMotion) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
 
   function createPetal() {
     const petal = document.createElement("span");
+
     petal.className = "petal";
     petal.textContent = Math.random() > 0.5 ? "✿" : "❀";
     petal.style.left = Math.random() * 100 + "vw";
     petal.style.animationDuration = (7 + Math.random() * 8) + "s";
     petal.style.fontSize = (12 + Math.random() * 12) + "px";
-    petal.style.opacity = (0.25 + Math.random() * 0.4);
+    petal.style.opacity = 0.25 + Math.random() * 0.4;
 
-    petalContainer.appendChild(petal);
+    container.appendChild(petal);
 
-    setTimeout(() => {
-      petal.remove();
-    }, 16000);
+    setTimeout(() => petal.remove(), 16000);
   }
 
   setInterval(createPetal, 1000);
 }
 
 
-// 3. SCROLL REVEAL ANIMATIONS
+/* =========================================
+   3. SCROLL REVEAL
+========================================= */
 
 const revealElements = document.querySelectorAll(
   ".letter-card, .photo-card, .reason-card, .music-card"
@@ -82,124 +99,101 @@ if ("IntersectionObserver" in window && !reducedMotion) {
     element.classList.add("reveal");
   });
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.15
-  });
+  }, { threshold: 0.15 });
 
-  revealElements.forEach(element => {
-    observer.observe(element);
-  });
-
+  revealElements.forEach(element => observer.observe(element));
 } else {
-  revealElements.forEach(element => {
-    element.classList.add("visible");
-  });
+  revealElements.forEach(element => element.classList.add("visible"));
 }
 
 
-// 4. INTERACTIVE REASONS
+/* =========================================
+   4. INTERACTIVE REASONS
+========================================= */
 
 const reasonCards = document.querySelectorAll(".reason-card");
 const reasonMessage = document.getElementById("reasonMessage");
 
 reasonCards.forEach(card => {
   card.addEventListener("click", () => {
-    const message = card.dataset.message;
+    if (!reasonMessage) return;
 
     reasonMessage.style.opacity = "0";
 
     setTimeout(() => {
-      reasonMessage.textContent = message;
+      reasonMessage.textContent = card.dataset.message || "";
       reasonMessage.style.opacity = "1";
     }, 200);
   });
 });
 
 
-// 5. SMOOTH SCROLLING
+/* =========================================
+   5. SMOOTH SCROLLING
+========================================= */
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", event => {
-    const target = document.querySelector(
-      link.getAttribute("href")
-    );
+    const href = link.getAttribute("href");
+
+    if (!href || href === "#") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const target = document.querySelector(href);
 
     if (target) {
       event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
+      target.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
 
 
-// Keyboard controls
-
-document.addEventListener("keydown", event => {
-  if (!lightbox.classList.contains("active")) return;
-
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-
-  if (event.key === "ArrowLeft") {
-    showPhoto(currentPhotoIndex - 1);
-  }
-
-  if (event.key === "ArrowRight") {
-    showPhoto(currentPhotoIndex + 1);
-  }
-});
-
-console.log("A little world for Elly is ready. ♡");
-
-
-/* ==================================
-   7. SECRET ENVELOPE
-================================== */
+/* =========================================
+   6. SECRET ENVELOPE
+========================================= */
 
 const envelopeButton = document.getElementById("envelopeButton");
 const secretLetter = document.getElementById("secretLetter");
 
-envelopeButton.addEventListener("click", () => {
+if (envelopeButton && secretLetter) {
+  envelopeButton.addEventListener("click", () => {
+    if (envelopeButton.classList.contains("opened")) return;
 
-  envelopeButton.classList.add("opened");
+    envelopeButton.classList.add("opened");
 
-  setTimeout(() => {
+    setTimeout(() => {
+      secretLetter.classList.remove("hidden");
 
-    secretLetter.classList.remove("hidden");
-
-    secretLetter.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-  }, 650);
-
-});
+      secretLetter.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 650);
+  });
+}
 
 
-// =========================
-// MUSIC PLAYER CONTROLS
-// =========================
+/* =========================================
+   7. MUSIC PLAYER
+========================================= */
 
-const music = document.getElementById("backgroundMusic");
 const musicToggle = document.getElementById("musicToggle");
 const vinylRecord = document.getElementById("vinylRecord");
 const musicProgress = document.getElementById("musicProgress");
 const currentTimeDisplay = document.getElementById("currentTime");
 const durationDisplay = document.getElementById("duration");
 
-// Format seconds into minutes and seconds
 function formatMusicTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
 
@@ -209,65 +203,60 @@ function formatMusicTime(seconds) {
   return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
 }
 
-// Play and pause
-musicToggle.addEventListener("click", () => {
-  if (music.paused) {
-    music.play().catch(error => {
-      console.log("Music could not play:", error);
-    });
-  } else {
-    music.pause();
-  }
-});
+if (music && musicToggle) {
+  musicToggle.addEventListener("click", () => {
+    if (music.paused) {
+      music.play().catch(error => {
+        console.warn("Music could not play:", error);
+      });
+    } else {
+      music.pause();
+    }
+  });
 
-// Update button and vinyl appearance
-music.addEventListener("play", () => {
-  musicToggle.textContent = "❚❚ Pause";
-  vinylRecord.classList.add("playing");
-});
+  music.addEventListener("play", () => {
+    musicToggle.textContent = "❚❚ Pause";
+    vinylRecord?.classList.add("playing");
+  });
 
-music.addEventListener("pause", () => {
-  musicToggle.textContent = "▶ Play ♡";
-  vinylRecord.classList.remove("playing");
-});
+  music.addEventListener("pause", () => {
+    musicToggle.textContent = "▶ Play ♡";
+    vinylRecord?.classList.remove("playing");
+  });
 
-// Show song duration
-music.addEventListener("loadedmetadata", () => {
-  durationDisplay.textContent = formatMusicTime(music.duration);
-});
+  music.addEventListener("loadedmetadata", () => {
+    if (durationDisplay) {
+      durationDisplay.textContent = formatMusicTime(music.duration);
+    }
+  });
 
-// Update progress bar and current time
-music.addEventListener("timeupdate", () => {
-  if (Number.isFinite(music.duration) && music.duration > 0) {
-    musicProgress.value = (music.currentTime / music.duration) * 100;
-  }
+  music.addEventListener("timeupdate", () => {
+    if (musicProgress && music.duration > 0) {
+      musicProgress.value = (music.currentTime / music.duration) * 100;
+    }
 
-  currentTimeDisplay.textContent = formatMusicTime(music.currentTime);
-});
+    if (currentTimeDisplay) {
+      currentTimeDisplay.textContent = formatMusicTime(music.currentTime);
+    }
+  });
 
-// Allow dragging the progress bar
-musicProgress.addEventListener("input", () => {
-  if (Number.isFinite(music.duration) && music.duration > 0) {
-    music.currentTime = (musicProgress.value / 100) * music.duration;
-  }
-});
+  music.addEventListener("ended", () => {
+    if (musicProgress) musicProgress.value = 0;
+    if (currentTimeDisplay) currentTimeDisplay.textContent = "0:00";
+  });
+}
 
-// Reset when the song ends
-music.addEventListener("ended", () => {
-  musicProgress.value = 0;
-  currentTimeDisplay.textContent = "0:00";
-});
+if (music && musicProgress) {
+  musicProgress.addEventListener("input", () => {
+    if (music.duration > 0) {
+      music.currentTime = (musicProgress.value / 100) * music.duration;
+    }
+  });
+}
 
-
-// =========================
-// SYNCHRONIZED FLOATING LYRICS
-// =========================
-
-const floatingLyrics = document.getElementById("floatingLyrics");
-const lyricText = document.getElementById("lyricText");
-
-// Original placeholder lines.
-// Replace these with your own original messages and timestamps.
+/* =========================================
+   8. SONG LYRICS
+========================================= */
 
 const lyricCues = [
   { time: 9.53, text: "I wake up exhausted, even in the morning" },
@@ -310,12 +299,12 @@ const lyricCues = [
   { time: 143.48, text: "Already all night, like a live wire" },
   { time: 146.57, text: "I'm always louder with you (I'm always louder with you)" },
   { time: 149.86, text: "Keep turnin' me on (keep turnin' me on)" },
-  { time: 154.97, text: "When you're around, it's already alright" },
-  { time: 158.06, text: "Already alright, like a radio" },
+  { time: 154.97, text: "When you're around, it's already alright (keep turnin' me up, up, keep turnin' me)" },
+  { time: 158.06, text: "Already alright, like a radio (keep turnin' me up, up, keep turnin' me)" },
   { time: 161.02, text: "I'm tunin' into you (I'm tunin' into you)" },
   { time: 164.21, text: "You're turnin' me on (you're turnin' me on)" },
-  { time: 169.25, text: "You make me feel like I could dance all night" },
-  { time: 172.44, text: "Already all night, like a live wire" },
+  { time: 169.25, text: "You make me feel like I could dance all night (keep turnin' me up, up, keep turnin' me)" },
+  { time: 172.44, text: "Already all night, like a live wire (keep turnin' me up, up, keep turnin' me)" },
   { time: 175.68, text: "I'm always louder with you (I'm always louder with you)" },
   { time: 178.95, text: "Keep turnin' me on (keep turnin' me on)" },
   { time: 184.09, text: "When you're around, it's already alright" },
@@ -324,61 +313,119 @@ const lyricCues = [
   { time: 193.23, text: "You're turnin' me on (you're turnin' me)" }
 ];
 
+/* =========================================
+   9. FLOATING LYRICS OVERLAY
+   Created entirely by JavaScript
+========================================= */
 
-let activeLyricIndex = -1;
+const caption = document.createElement("div");
+caption.id = "song-caption-overlay";
+document.body.appendChild(caption);
 
-function updateFloatingLyrics() {
-  if (!music || !floatingLyrics || !lyricText) return;
+const captionStyle = document.createElement("style");
 
-  if (music.paused || music.ended) {
-    floatingLyrics.classList.remove("visible");
-    activeLyricIndex = -1;
-    return;
+captionStyle.textContent = `
+  #song-caption-overlay {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: 9% !important;
+    transform: translate(-50%, 18px) !important;
+    width: min(88%, 650px) !important;
+    box-sizing: border-box !important;
+    padding: 16px 22px !important;
+    z-index: 2147483647 !important;
+    background: rgba(36, 59, 83, 0.96) !important;
+    color: #fffefa !important;
+    border: 1px solid rgba(255,255,255,.3) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 35px rgba(0,0,0,.2) !important;
+    text-align: center !important;
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(17px, 3vw, 24px) !important;
+    line-height: 1.5 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity .4s ease, transform .4s ease !important;
   }
 
-  const currentSongTime = music.currentTime;
+  #song-caption-overlay.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%, 0) !important;
+  }
+
+  @media (max-width: 600px) {
+    #song-caption-overlay {
+      bottom: 8% !important;
+      width: 90% !important;
+      padding: 12px 15px !important;
+      font-size: 17px !important;
+    }
+  }
+`;
+
+document.head.appendChild(captionStyle);
+
+let activeLyricIndex = -1;
+let lyricTimeout = null;
+
+function updateFloatingLyrics() {
+  if (!music || music.paused || music.ended) {
+    caption.classList.remove("show");
+    return;
+  }
 
   let nextIndex = -1;
 
   for (let i = 0; i < lyricCues.length; i++) {
-    if (currentSongTime >= lyricCues[i].time) {
+    if (music.currentTime >= lyricCues[i].time) {
       nextIndex = i;
     } else {
       break;
     }
   }
 
-  if (nextIndex !== activeLyricIndex) {
-    activeLyricIndex = nextIndex;
+  if (nextIndex === activeLyricIndex) return;
 
-    if (nextIndex === -1) {
-      floatingLyrics.classList.remove("visible");
-      return;
-    }
+  activeLyricIndex = nextIndex;
 
-    floatingLyrics.classList.remove("visible");
+  if (lyricTimeout) clearTimeout(lyricTimeout);
 
-    setTimeout(() => {
-      if (
-        !music.paused &&
-        activeLyricIndex === nextIndex
-      ) {
-        lyricText.textContent = lyricCues[nextIndex].text;
-        floatingLyrics.classList.add("visible");
-      }
-    }, 350);
+  if (nextIndex === -1) {
+    caption.classList.remove("show");
+    return;
   }
+
+  caption.classList.remove("show");
+
+  lyricTimeout = setTimeout(() => {
+    if (!music.paused && activeLyricIndex === nextIndex) {
+      caption.textContent = lyricCues[nextIndex].text;
+      caption.classList.add("show");
+    }
+  }, 250);
 }
 
-music.addEventListener("timeupdate", updateFloatingLyrics);
-music.addEventListener("play", updateFloatingLyrics);
-music.addEventListener("pause", updateFloatingLyrics);
-music.addEventListener("seeked", updateFloatingLyrics);
+if (music) {
+  music.addEventListener("play", updateFloatingLyrics);
+  music.addEventListener("timeupdate", updateFloatingLyrics);
+  music.addEventListener("seeked", updateFloatingLyrics);
+
+  music.addEventListener("pause", () => {
+    caption.classList.remove("show");
+  });
+
+  music.addEventListener("ended", () => {
+    caption.classList.remove("show");
+    activeLyricIndex = -1;
+  });
+}
 
 
-/* ==========================================
-   INTERACTIVE SPIDER LILY GARDEN
-========================================== */
+/* =========================================
+   10. INTERACTIVE SPIDER LILY GARDEN
+========================================= */
 
 const lilyGarden = document.getElementById("lilyGarden");
 const lilyFlowers = document.querySelectorAll(".lily-flower");
@@ -394,36 +441,38 @@ const flowerMessages = [
 
 const openedFlowers = new Set();
 
-/* FLOWER INTERACTIONS */
-
 function openLilyFlower(flower) {
   const index = Number(flower.dataset.flower);
 
+  if (!Number.isInteger(index) || !flowerMessages[index]) return;
+
   if (openedFlowers.has(index)) {
-    flowerMessageText.textContent = flowerMessages[index];
+    if (flowerMessageText) {
+      flowerMessageText.textContent = flowerMessages[index];
+    }
     return;
   }
 
   openedFlowers.add(index);
   flower.classList.add("bloomed");
 
-  flowerMessageText.textContent = flowerMessages[index];
+  if (flowerMessageText) {
+    flowerMessageText.textContent = flowerMessages[index];
+  }
 
   if (gardenDots[index]) {
     gardenDots[index].classList.add("active");
   }
 
-  if (openedFlowers.size === 3) {
+  if (openedFlowers.size === 3 && gardenFinalMessage) {
     gardenFinalMessage.classList.remove("hidden");
   }
 }
 
-lilyFlowers.forEach((flower) => {
-  flower.addEventListener("click", () => {
-    openLilyFlower(flower);
-  });
+lilyFlowers.forEach(flower => {
+  flower.addEventListener("click", () => openLilyFlower(flower));
 
-  flower.addEventListener("keydown", (event) => {
+  flower.addEventListener("keydown", event => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       openLilyFlower(flower);
@@ -431,21 +480,26 @@ lilyFlowers.forEach((flower) => {
   });
 });
 
-/* DRAG TO ROTATE */
+
+/* =========================================
+   11. DRAG TO ROTATE FLOWER GARDEN
+========================================= */
 
 if (lilyGarden) {
   let dragging = false;
   let previousX = 0;
   let rotationY = 0;
-  let rotationX = 5;
+  const rotationX = 5;
 
-  lilyGarden.addEventListener("pointerdown", (event) => {
+  lilyGarden.addEventListener("pointerdown", event => {
+    if (event.target.closest(".lily-flower")) return;
+
     dragging = true;
     previousX = event.clientX;
     lilyGarden.classList.add("dragging");
   });
 
-  document.addEventListener("pointermove", (event) => {
+  document.addEventListener("pointermove", event => {
     if (!dragging) return;
 
     const movementX = event.clientX - previousX;
@@ -459,13 +513,14 @@ if (lilyGarden) {
     previousX = event.clientX;
   });
 
-  document.addEventListener("pointerup", () => {
+  function stopDragging() {
     dragging = false;
     lilyGarden.classList.remove("dragging");
-  });
+  }
 
-  document.addEventListener("pointercancel", () => {
-    dragging = false;
-    lilyGarden.classList.remove("dragging");
-  });
+  document.addEventListener("pointerup", stopDragging);
+  document.addEventListener("pointercancel", stopDragging);
 }
+
+
+console.log("A little world for Elly is ready. ♡");
