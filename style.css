@@ -801,3 +801,189 @@ button {
     padding-top: 10px;
   }
 }
+
+
+/* =========================================
+   MOBILE LAYOUT AND SECRET ENVELOPE REPAIR
+========================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#mainContent {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section,
+.secret-section,
+.final-section,
+footer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.secret-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.envelope-button {
+  display: block;
+  margin: 35px auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.envelope {
+  position: relative;
+  width: 200px;
+  height: 135px;
+  margin: auto;
+  perspective: 800px;
+}
+
+.envelope-back,
+.envelope-front,
+.envelope-flap,
+.envelope-letter,
+.envelope-seal {
+  position: absolute;
+}
+
+.envelope-back {
+  inset: 0;
+  background: #dce6ef;
+  border: 1px solid #91a8bf;
+  z-index: 1;
+}
+
+.envelope-letter {
+  width: 85%;
+  height: 85%;
+  left: 7.5%;
+  top: 5%;
+  display: grid;
+  place-items: center;
+  background: #fffefa;
+  color: #385675;
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  z-index: 2;
+  transition: transform .7s ease;
+}
+
+.envelope-front {
+  inset: 0;
+  background: #c5d4e2;
+  clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.envelope-flap {
+  inset: 0;
+  background: #91a8bf;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top;
+  transition: transform .6s ease;
+  z-index: 4;
+}
+
+.envelope-seal {
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  color: #fffefa;
+  font-size: 22px;
+  z-index: 5;
+}
+
+.envelope-button.opened .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope-button.opened .envelope-letter {
+  transform: translateY(-65px);
+}
+
+.secret-letter {
+  width: min(100%, 650px);
+  margin: 35px auto 0;
+  padding: 35px;
+  background: #fffefa;
+  border: 1px solid #d6e0e9;
+  box-shadow: 0 15px 50px rgba(36, 59, 83, .12);
+  text-align: left;
+}
+
+.secret-letter h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.secret-letter p {
+  margin: 18px 0;
+  line-height: 1.8;
+  color: #34485e;
+}
+
+.secret-letter .letter-signature {
+  text-align: right;
+  font-family: "Caveat", cursive;
+  font-size: 21px;
+  color: #526f8c;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 75px 20px;
+  }
+
+  .secret-section {
+    padding: 75px 18px;
+  }
+
+  .secret-letter {
+    padding: 24px 18px;
+  }
+
+  .secret-letter p {
+    font-size: 14px;
+  }
+
+  .secret-letter .letter-signature {
+    font-size: 19px;
+  }
+
+  .nav {
+    padding: 18px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-note {
+    width: 100%;
+  }
+
+  .hero,
+  .section-heading,
+  .bouquet-section,
+  .music-section,
+  .final-section {
+    text-align: center;
+  }
+}
+
