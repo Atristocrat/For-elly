@@ -1,1167 +1,2457 @@
 
+
 /* =========================================
+
    FOR ELLY, WITH LOVE
+
    Dusty Navy & Ivory Edition
-========================================= */
+
+\========================================= */
+
+
 
 :root {
+
   --cream: #f8f6f0;
+
   --white: #fffefa;
 
+
+
   --blue-light: #e8edf3;
+
   --blue-pale: #dce6ef;
+
   --blue-soft: #c5d4e2;
+
   --blue-muted: #91a8bf;
+
   --blue: #526f8c;
+
   --blue-dark: #385675;
+
   --navy: #243b53;
 
+
+
   --brown: #34485e;
+
   --muted: #78899b;
+
   --light: #edf1f5;
 
+
+
   --border: #d6e0e9;
+
   --shadow: rgba(36, 59, 83, 0.12);
 
+
+
   --red-lily: #b83f48;
+
 }
+
+
 
 * {
+
   box-sizing: border-box;
+
   margin: 0;
+
   padding: 0;
+
   scroll-behavior: smooth;
+
 }
+
+
 
 html {
+
   background: var(--cream);
+
 }
+
+
 
 body {
+
   background: var(--cream);
+
   color: var(--brown);
+
   font-family: 'DM Sans', sans-serif;
+
   line-height: 1.8;
+
   overflow-x: hidden;
+
 }
+
+
 
 h1, h2, h3 {
+
   font-family: 'Playfair Display', serif;
+
   font-weight: 400;
+
   line-height: 1.25;
+
   color: var(--navy);
+
 }
+
+
 
 h1 i, h2 i {
+
   color: var(--blue);
+
   font-weight: 400;
+
 }
+
+
 
 button, a {
+
   -webkit-tap-highlight-color: transparent;
+
 }
+
+
 
 button {
+
   font-family: inherit;
+
 }
+
+
 
 .hidden {
+
   display: none !important;
+
 }
 
+
+
 /* =========================================
+
    OPENING SCREEN
-========================================= */
+
+\========================================= */
+
+
 
 .opening {
+
   min-height: 100vh;
+
   min-height: 100svh;
+
   display: grid;
+
   place-items: center;
+
   text-align: center;
+
   padding: 30px;
+
   position: relative;
+
   overflow: hidden;
+
+
 
   background: linear-gradient(
+
     145deg,
+
     #243b53,
+
     #385675
+
   );
 
+
+
   color: white;
+
   transition: opacity .8s ease;
+
 }
+
+
 
 .opening::before,
+
 .opening::after {
+
   content: "";
+
   position: absolute;
+
   width: 280px;
+
   height: 280px;
+
   border: 1px solid #dce6ef40;
+
   border-radius: 50%;
+
   pointer-events: none;
+
 }
+
+
 
 .opening::before {
+
   top: -150px;
+
   left: -130px;
+
 }
+
+
 
 .opening::after {
+
   bottom: -160px;
+
   right: -130px;
+
 }
+
+
 
 .opening-content {
+
   animation: fadeUp 1.3s ease both;
+
   z-index: 1;
+
 }
+
+
 
 .flower-decoration {
+
   font-size: 35px;
+
   color: #dce6ef;
+
   margin-bottom: 20px;
+
   animation: flowerTurn 12s linear infinite;
+
 }
+
+
 
 .eyebrow {
+
   font-size: 10px;
+
   letter-spacing: 3px;
+
   color: var(--blue);
+
   font-weight: 600;
+
 }
+
+
 
 .opening .eyebrow {
+
   color: #dce6ef;
+
 }
+
+
 
 .opening h1 {
+
   font-size: clamp(3.5rem, 10vw, 6rem);
+
   margin: 20px 0;
+
   color: white;
+
 }
+
+
 
 .opening h1 i {
+
   color: #c5d4e2;
+
 }
+
+
 
 .opening p {
+
   color: #dce6ef;
+
   font-size: 14px;
+
 }
+
+
 
 .pink,
+
 .logo span {
+
   color: var(--blue);
+
 }
+
+
 
 .main-button {
+
   margin-top: 35px;
+
   padding: 14px 30px;
+
   border: 1px solid #dce6ef;
+
   background: transparent;
+
   color: white;
+
   border-radius: 50px;
+
   cursor: pointer;
+
   font-size: 13px;
+
   transition: .35s ease;
+
 }
+
+
 
 .main-button:hover {
+
   background: white;
+
   color: var(--navy);
+
   transform: translateY(-4px);
+
   box-shadow: 0 10px 25px #00000020;
+
 }
+
+
 
 .main-button span {
+
   color: #c5d4e2;
+
   margin-left: 8px;
+
 }
+
+
 
 .main-button:hover span {
+
   color: var(--navy);
+
 }
+
+
 
 .tiny-note {
+
   margin-top: 50px;
+
   font-family: 'Caveat', cursive;
+
   font-size: 18px;
+
   color: #c5d4e2;
+
 }
+
+
 
 .corner-decoration {
+
   position: absolute;
+
   right: 10%;
+
   top: 15%;
+
   color: #91a8bf;
+
   font-size: 35px;
+
   animation: float 5s ease-in-out infinite;
+
 }
 
+
+
 /* =========================================
+
    NAVIGATION
-========================================= */
+
+\========================================= */
+
+
 
 .nav {
+
   display: flex;
+
   justify-content: space-between;
+
   padding: 24px 8%;
+
   align-items: center;
+
   border-bottom: 1px solid var(--border);
+
   background: var(--cream);
+
 }
+
+
 
 .logo {
+
   text-decoration: none;
+
   color: var(--navy);
+
   font-family: 'Playfair Display', serif;
+
   font-size: 22px;
+
 }
+
+
 
 .logo span {
+
   color: var(--blue);
+
 }
+
+
 
 .nav-note {
+
   color: var(--muted);
+
   font-size: 11px;
+
 }
+
+
 
 .nav a {
+
   color: var(--navy);
+
   transition: color .3s ease;
+
 }
+
+
 
 .nav a:hover {
+
   color: var(--blue-muted);
+
 }
 
+
+
 /* =========================================
+
    GENERAL SECTIONS
-========================================= */
+
+\========================================= */
+
+
 
 .section {
+
   padding: 110px 12%;
+
 }
+
+
 
 .section-heading {
+
   margin-bottom: 45px;
+
 }
+
+
 
 .section-heading h2 {
+
   font-size: clamp(2.3rem, 5vw, 3.5rem);
+
   margin: 20px 0;
+
 }
+
+
 
 .section-heading p {
+
   color: var(--muted);
+
   font-size: 14px;
+
 }
+
+
 
 .hero {
+
   min-height: 75vh;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   text-align: center;
+
 }
+
+
 
 .hero h1 {
+
   font-size: clamp(2.5rem, 6vw, 4.5rem);
+
   margin: 25px 0;
+
 }
+
+
 
 .subtitle {
+
   max-width: 380px;
+
   color: var(--muted);
+
   font-size: 14px;
+
 }
+
+
 
 .text-link {
+
   color: var(--blue);
+
   text-decoration: none;
+
   margin-top: 45px;
+
   font-size: 13px;
+
   transition: .3s;
+
 }
+
+
 
 .text-link:hover {
+
   color: var(--navy);
+
   letter-spacing: 1px;
+
 }
 
+
+
 /* =========================================
+
    LOVE LETTER
-========================================= */
+
+\========================================= */
+
+
 
 .letter-section {
+
   background: var(--blue-light);
+
 }
+
+
 
 .letter-card {
+
   background: var(--white);
+
   max-width: 650px;
+
   margin: auto;
+
   padding: clamp(30px, 7vw, 65px);
+
   box-shadow: 0 15px 50px var(--shadow);
+
   border: 1px solid white;
+
   position: relative;
+
 }
+
+
 
 .letter-card::before {
+
   content: "♡";
+
   position: absolute;
+
   right: 25px;
+
   top: 20px;
+
   color: var(--blue-soft);
+
   font-size: 24px;
+
 }
+
+
 
 .letter-date {
+
   font-size: 10px;
+
   letter-spacing: 2px;
+
   color: var(--blue);
+
 }
+
+
 
 .letter-card p {
+
   margin-top: 20px;
+
   font-size: 14px;
+
   color: var(--brown);
+
 }
+
+
 
 .handwriting {
+
   font-family: 'Caveat', cursive;
+
   font-size: 27px !important;
+
 }
+
+
 
 .signature {
+
   color: var(--blue);
+
   text-align: right;
+
   margin-top: 40px !important;
+
 }
 
+
+
 /* =========================================
+
    PHOTO GALLERY
-========================================= */
+
+\========================================= */
+
+
 
 .photo-grid,
+
 .gallery {
+
   display: grid;
+
   grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 30px;
+
   width: 100%;
+
   margin: 40px auto;
+
 }
+
+
 
 .photo-card {
+
   background: var(--white);
+
   padding: 12px 12px 20px;
+
   box-shadow: 0 8px 25px var(--shadow);
+
   border: 1px solid var(--border);
+
   border-radius: 4px;
+
   transform: rotate(-1deg);
+
   transition: transform .35s ease, box-shadow .35s ease;
+
   min-width: 0;
+
 }
+
+
 
 .photo-card:nth-child(even) {
+
   transform: rotate(1deg);
+
 }
+
+
 
 .photo-card:hover {
+
   transform: translateY(-7px) rotate(0deg);
+
   box-shadow: 0 15px 35px rgba(36, 59, 83, .18);
+
 }
+
+
 
 .photo-card img {
+
   display: block;
+
   width: 100%;
+
   height: 280px;
+
   object-fit: contain;
+
   background: #edf1f5;
+
   border-radius: 2px;
+
 }
+
+
 
 .photo-card figcaption {
+
   font-family: 'Caveat', cursive;
+
   font-size: 20px;
+
   line-height: 1.4;
+
   color: var(--blue-dark);
+
   text-align: center;
+
   padding-top: 14px;
+
 }
+
+
 
 .photo-card:nth-child(2) {
+
   transform: rotate(2deg);
+
   margin-top: 30px;
+
 }
+
+
 
 .photo-card:nth-child(2):hover {
+
   transform: rotate(0deg) translateY(-8px);
+
 }
+
+
 
 .photo-placeholder {
+
   height: 210px;
+
   background: var(--blue-soft);
+
   display: grid;
+
   place-items: center;
+
   color: white;
+
   font-size: 35px;
+
 }
 
+
+
 /* =========================================
+
    REASONS
-========================================= */
+
+\========================================= */
+
+
 
 .reasons {
+
   background: var(--blue-light);
+
 }
+
+
 
 .reason-grid,
+
 .reasons-grid {
+
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
+
   gap: 15px;
+
 }
+
+
 
 .reason-card {
+
   background: var(--white);
+
   border: 1px solid var(--border);
+
   padding: 25px;
+
   text-align: left;
+
   font: inherit;
+
   color: var(--brown);
+
   cursor: pointer;
+
   transition: .35s ease;
+
 }
+
+
 
 .reason-card:hover {
+
   border-color: var(--blue-muted);
+
   background: #f2f6fa;
+
   transform: translateY(-5px);
+
   box-shadow: 0 10px 25px var(--shadow);
+
 }
+
+
 
 .reason-card span {
+
   display: block;
+
   color: var(--blue);
+
   font-size: 11px;
+
   margin-bottom: 10px;
+
 }
+
+
 
 .reason-card b {
+
   float: right;
+
   color: var(--blue);
+
 }
 
+
+
 .reason-message {
+
   margin-top: 25px;
+
   min-height: 60px;
+
   text-align: center;
+
   color: var(--blue);
+
   font-family: 'Caveat', cursive;
+
   font-size: 25px;
+
   transition: opacity .3s ease;
+
 }
+
+
+
 
 
 /* =========================================
+
    RED SPIDER LILY BOUQUET
+
    Dusty Blue Transformation
-========================================= */
+
+\========================================= */
+
+
 
 .bouquet-section {
+
   text-align: center;
+
   position: relative;
+
   overflow: hidden;
+
 }
 
+
+
 .bouquet-section h2 {
+
   font-size: clamp(2.5rem, 5vw, 3.5rem);
+
   margin: 20px 0;
+
 }
+
+
 
 /* Original bouquet illustration */
 
+
+
 .spider-lily-bouquet {
+
   width: min(100%, 440px);
+
   margin: 45px auto 30px;
+
   animation: lilyFloat 4s ease-in-out infinite;
+
 }
 
+
+
 .spider-lily-bouquet svg {
+
   display: block;
+
   width: 100%;
+
   height: auto;
+
   overflow: visible;
+
   filter: drop-shadow(0 10px 12px #8d24301a);
+
 }
+
+
 
 /* Original flower colors */
 
+
+
 .lily-petal {
+
   fill: url(#lilyPetal);
+
   stroke: #8e1733;
+
   stroke-width: 1.3;
+
   stroke-linejoin: round;
 
+
+
   /* Only color changes. No movement or scaling. */
+
   transition:
+
     fill 700ms ease,
+
     stroke 700ms ease,
+
     filter 700ms ease;
+
 }
+
+
 
 .back-petals .lily-petal:nth-child(odd) {
+
   fill: #bd2948;
+
 }
+
+
 
 .front-petals .lily-petal {
+
   fill: #e64d60;
+
   stroke: #a91f3c;
+
 }
 
+
+
 .front-petals .lily-petal:nth-child(even) {
+
   fill: #f16b72;
+
 }
+
+
 
 /* BLUE TRANSFORMATION */
 
+
+
 .lily-flower.bloomed .lily-petal {
+
   fill: #7898b8 !important;
+
   stroke: #385675 !important;
+
   filter: drop-shadow(0 0 4px rgba(120, 152, 184, 0.3));
+
 }
+
+
 
 /* Stamens */
 
+
+
 .lily-stamens path {
+
   fill: none;
+
   stroke: #d85b61;
+
   stroke-width: 2.2;
+
   stroke-linecap: round;
+
   transition: stroke 700ms ease;
+
 }
 
+
+
 .lily-flower.bloomed .lily-stamens path {
+
   stroke: #a8c5df;
+
 }
+
+
 
 /* Golden tips */
 
+
+
 .stamen-tips circle {
+
   fill: #e8bd79;
+
   stroke: #9c603f;
+
   stroke-width: 0.8;
+
 }
 
+
+
 .lily-flower.bloomed .stamen-tips circle {
+
   fill: #e8d5a8;
+
 }
+
+
 
 /* Flower center stays exactly in place */
 
+
+
 .flower-core {
+
   fill: url(#lilyCenter);
+
   stroke: #8e4d38;
+
   stroke-width: 1;
+
   transition: fill 700ms ease;
+
 }
 
+
+
 .lily-flower.bloomed .flower-core {
+
   fill: #e8d5a8;
+
 }
+
+
 
 /* Interaction */
 
+
+
 .lily-flower {
+
   cursor: pointer;
+
   outline: none;
+
 }
+
+
 
 .lily-flower:hover .lily-petal {
+
   filter: brightness(1.08);
+
 }
 
+
+
 .lily-flower:focus-visible .flower-head {
+
   filter: drop-shadow(0 0 8px rgba(120, 152, 184, 0.6));
+
 }
+
+
 
 /* Messages */
 
+
+
 .flower-message {
+
   position: relative;
+
   max-width: 440px;
+
   min-height: 95px;
+
   margin: 0 auto 12px;
+
   padding: 18px 25px;
+
   text-align: center;
+
   background: rgba(232, 237, 243, 0.55);
+
   border: 1px solid rgba(82, 111, 140, 0.18);
+
   border-radius: 16px;
+
 }
+
+
 
 .flower-message-label {
+
   display: block;
+
   color: var(--blue);
+
   font-size: 0.65rem;
+
   letter-spacing: 3px;
+
   margin-bottom: 9px;
+
 }
 
+
+
 .flower-message p {
+
   color: var(--blue-dark);
+
   font-family: "Playfair Display", serif;
+
   font-size: 1.05rem;
+
   line-height: 1.7;
+
   margin: 0;
+
 }
+
+
 
 /* Progress dots */
 
+
+
 .garden-progress {
+
   display: flex;
+
   justify-content: center;
+
   gap: 11px;
+
   margin: 20px auto;
+
 }
+
+
 
 .garden-dot {
+
   width: 8px;
+
   height: 8px;
+
   border-radius: 50%;
+
   background: #cbd3dc;
-  transition: background 300ms ease;
+
+  transition: *background* 300ms ease;
+
 }
 
+
+
 .garden-dot.active {
+
   background: #7898b8;
+
 }
+
+
 
 /* Final message */
 
+
+
 .garden-final-message {
+
   max-width: 480px;
+
   margin: 25px auto;
+
   color: var(--blue-dark);
+
   font-family: "Playfair Display", serif;
+
   font-size: 1.2rem;
+
   line-height: 1.8;
+
   text-align: center;
+
   animation: finalBloom 1s ease both;
+
 }
 
+
+
 @keyframes finalBloom {
+
   from {
+
     opacity: 0;
+
     transform: translateY(15px);
+
   }
+
   to {
+
     opacity: 1;
+
     transform: translateY(0);
+
   }
+
 }
+
+
 
 /* Flower note */
 
+
+
 .spider-lily-note {
+
   font-family: 'Caveat', cursive;
+
   font-size: 21px;
+
   color: var(--blue);
+
   margin-top: 25px;
+
   line-height: 1.9;
+
 }
+
+
 
 /* Original floating animation */
 
+
+
 @keyframes lilyFloat {
+
   0%, 100% {
+
     transform: translateY(0);
+
   }
+
   50% {
+
     transform: translateY(-8px);
+
   }
+
 }
+
+
 
 /* Mobile */
 
+
+
 @media (max-width: 600px) {
+
   .spider-lily-bouquet {
+
     width: 100%;
+
     max-width: 440px;
+
   }
+
+
 
   .flower-message {
+
     margin-left: 12px;
+
     margin-right: 12px;
+
     padding: 16px;
+
   }
+
+
 
   .flower-message p {
+
     font-size: 0.95rem;
+
   }
+
 }
 
+
+
 /* Hide invisible flower click areas */
+
 .flower-hitbox {
+
   fill: transparent !important;
+
   stroke: none !important;
+
   pointer-events: all;
+
 }
+
+
 
 /* RESTORE SPIDER LILY LEAVES AND STEMS */
 
+
+
 .garden-leaves path,
+
 .garden-leaves polygon,
+
 .garden-leaves ellipse {
+
   fill: #7898a0 !important;
+
   stroke: #385675 !important;
+
   stroke-width: 1.2;
+
 }
+
+
 
 .garden-stems path,
+
 .garden-stems line {
+
   fill: none !important;
+
   stroke: #526f75 !important;
+
   stroke-width: 3;
+
   stroke-linecap: round;
+
 }
+
+
 
 /* Keep flower click areas invisible */
+
 .flower-hitbox {
+
   fill: transparent !important;
+
   stroke: none !important;
+
   pointer-events: all;
+
 }
 
 
 
+
+
+
+
 /* =========================================
+
    OPENING SCREEN VISIBILITY FIX
-========================================= */
 
-#mainContent.hidden {
+\========================================= */
+
+
+
+\#mainContent.hidden {
+
   display: none !important;
+
 }
 
-#opening.hidden {
+
+
+\#opening.hidden {
+
   display: none !important;
+
 }
 
-#opening {
+
+
+\#opening {
+
   width: 100%;
+
   min-height: 100vh;
+
   min-height: 100svh;
+
 }
+
+
+
 
 
 /* =========================================
+
    MOBILE GALLERY REPAIR
-========================================= */
+
+\========================================= */
+
+
 
 @media (max-width: 600px) {
+
   .photo-grid,
+
   .gallery {
+
     display: grid;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     align-items: start;
+
     grid-auto-rows: auto;
+
     gap: 14px;
+
     width: 100%;
+
   }
+
+
 
   .photo-card,
+
   .photo-card:nth-child(even),
+
   .photo-card:nth-child(2) {
+
     width: 100%;
+
     height: auto;
+
     min-height: 0;
+
     align-self: start;
+
     margin: 0;
+
     padding: 8px 8px 14px;
+
     transform: none;
+
   }
+
+
 
   .photo-card img {
+
     display: block;
+
     width: 100%;
+
     height: 165px;
+
     object-fit: contain;
+
   }
+
+
 
   .photo-card figcaption {
+
     min-height: 0;
+
     font-size: 16px;
+
     line-height: 1.35;
+
     overflow-wrap: anywhere;
+
     padding-top: 10px;
+
   }
+
 }
 
 
 
+
+
+
+
 /* =========================================
+
    FINAL MESSAGE
-========================================= */
+
+\========================================= */
+
+
 
 .final-section {
+
   width: 100%;
+
   min-height: 75vh;
+
   padding: 110px 24px;
+
   background: linear-gradient(
+
     145deg,
+
     #243b53,
+
     #385675
+
   );
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   text-align: center;
+
   position: relative;
+
   overflow: hidden;
+
 }
+
+
 
 .final-section .eyebrow {
+
   color: #c5d4e2;
+
 }
+
+
 
 .final-section h2 {
+
   color: #fffefa;
+
   font-size: clamp(2.3rem, 6vw, 3.5rem);
+
   margin: 25px 0;
+
 }
+
+
 
 .final-section h1 {
+
   color: #fffefa;
+
   font-size: clamp(2rem, 5vw, 3.5rem);
+
   margin: 10px 0 25px;
+
   max-width: 800px;
+
 }
+
+
 
 .final-section h1 i {
+
   color: #c5d4e2;
+
 }
+
+
 
 .final-section p {
+
   color: #dce6ef;
+
   font-size: 14px;
+
   max-width: 400px;
+
 }
+
+
 
 .final-heart {
+
   display: block;
+
   color: #c5d4e2;
+
   font-size: 40px;
+
   margin-top: 35px;
+
   animation: heartPulse 2s ease-in-out infinite;
+
 }
+
+
 
 @keyframes heartPulse {
+
   0%, 100% {
+
     transform: scale(1);
+
   }
+
   50% {
+
     transform: scale(1.15);
+
   }
+
 }
 
 
+
+
+
 /* =========================================
+
    SECRET LETTER SECTION
-========================================= */
+
+\========================================= */
+
+
 
 .secret-section {
+
   width: 100%;
+
   padding: 110px 24px;
+
   background: #e8edf3;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   text-align: center;
+
   overflow: hidden;
+
 }
+
+
 
 .secret-section > h2 {
+
   font-size: clamp(2rem, 5vw, 3rem);
+
   margin: 22px 0;
+
 }
 
+
+
 .envelope-instruction {
+
   color: #78899b;
+
   font-size: 14px;
+
   margin-top: 5px;
+
 }
+
+
+
 
 
 /* =========================================
+
    ENVELOPE
-========================================= */
+
+\========================================= */
+
+
 
 .envelope-button {
+
   display: block;
+
   width: 220px;
+
   height: 165px;
+
   margin: 45px auto 20px;
+
   padding: 0;
+
   border: none;
+
   background: transparent;
+
   cursor: pointer;
+
   -webkit-tap-highlight-color: transparent;
+
 }
+
+
 
 .envelope {
+
   position: relative;
+
   width: 200px;
+
   height: 135px;
+
   margin: auto;
+
   perspective: 900px;
+
   filter: drop-shadow(0 12px 15px rgba(36, 59, 83, .15));
+
 }
+
+
 
 .envelope-back {
+
   position: absolute;
+
   inset: 0;
+
   background: #91a8bf;
+
   border-radius: 4px;
+
   z-index: 1;
+
 }
+
+
 
 .envelope-letter {
+
   position: absolute;
+
   width: 84%;
+
   height: 90%;
+
   left: 8%;
+
   top: 5%;
+
   background: #fffefa;
+
   color: #385675;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-family: 'Caveat', cursive;
+
   font-size: 23px;
+
   box-shadow: 0 2px 8px rgba(36, 59, 83, .12);
+
   z-index: 2;
+
   transition: transform .8s ease;
+
 }
+
+
 
 .envelope-front {
+
   position: absolute;
+
   inset: 0;
+
   background: #c5d4e2;
+
   clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+
   z-index: 3;
+
 }
+
+
 
 .envelope-flap {
+
   position: absolute;
+
   inset: 0;
+
   background: #7898b8;
+
   clip-path: polygon(0 0, 100% 0, 50% 62%);
+
   transform-origin: top center;
+
   transition: transform .7s ease;
+
   z-index: 4;
+
 }
 
+
+
 .envelope-seal {
+
   position: absolute;
+
   top: 48%;
+
   left: 50%;
+
   transform: translate(-50%, -50%);
+
   width: 32px;
+
   height: 32px;
+
   border-radius: 50%;
+
   background: #385675;
+
   color: #fffefa;
+
   display: grid;
+
   place-items: center;
+
   font-size: 17px;
+
   z-index: 5;
+
   transition: opacity .3s ease;
+
 }
+
+
 
 /* Opening animation */
 
+
+
 .envelope-button.opened .envelope-flap {
+
   transform: rotateX(180deg);
+
   z-index: 1;
+
 }
+
+
 
 .envelope-button.opened .envelope-letter {
+
   transform: translateY(-75px);
+
 }
+
+
 
 .envelope-button.opened .envelope-seal {
+
   opacity: 0;
+
 }
+
+
 
 .envelope-button:hover .envelope {
+
   transform: translateY(-5px);
+
 }
+
+
 
 .envelope {
+
   transition: transform .3s ease;
+
 }
+
+
 
 .envelope-hint {
+
   color: #526f8c;
+
   font-family: 'Caveat', cursive;
+
   font-size: 21px;
+
   margin-top: 5px;
+
 }
 
 
+
+
+
 /* =========================================
+
    SECRET LETTER PAPER
-========================================= */
+
+\========================================= */
+
+
 
 .secret-letter {
+
   display: block;
+
   width: min(100%, 650px);
+
   margin: 40px auto 0;
+
   padding: 55px;
+
   background: #fffefa;
+
   border: 1px solid #d6e0e9;
+
   box-shadow: 0 15px 50px rgba(36, 59, 83, .12);
+
   text-align: left;
+
   position: relative;
+
   animation: letterAppear .9s ease both;
+
 }
+
+
 
 .secret-letter .eyebrow {
+
   display: block;
+
   text-align: center;
+
 }
+
+
 
 .secret-letter h2 {
+
   font-size: 2rem;
+
   text-align: center;
+
   margin: 25px 0;
+
 }
+
+
 
 .secret-letter p {
+
   color: #34485e;
+
   font-size: 14px;
+
   line-height: 1.9;
+
   margin: 20px 0;
+
 }
+
+
 
 .secret-letter .letter-signature {
+
   text-align: right;
+
   font-family: 'Caveat', cursive;
+
   font-size: 23px;
+
   color: #526f8c;
+
   margin-top: 35px;
+
 }
+
+
 
 @keyframes letterAppear {
+
   from {
+
     opacity: 0;
+
     transform: translateY(20px);
+
   }
+
   to {
+
     opacity: 1;
+
     transform: translateY(0);
+
   }
+
 }
 
 
+
+
+
 /* =========================================
+
    FOOTER
-========================================= */
+
+\========================================= */
+
+
 
 footer {
+
   width: 100%;
+
   padding: 35px 20px;
+
   background: #243b53;
+
   color: #e8edf3;
+
   text-align: center;
+
   font-size: 13px;
+
   line-height: 2;
+
 }
 
+
+
 footer span {
+
   color: #91a8bf;
+
   font-family: 'Caveat', cursive;
+
   font-size: 19px;
+
 }
+
+
+
 
 
 /* =========================================
+
    MOBILE: FINAL SECTIONS
-========================================= */
+
+\========================================= */
+
+
 
 @media (max-width: 600px) {
 
+
+
   .final-section {
+
     min-height: 65vh;
+
     padding: 85px 22px;
+
     text-align: center;
+
   }
+
+
 
   .final-section h2 {
+
     font-size: 2.3rem;
+
   }
+
+
 
   .final-section h1 {
+
     font-size: 2rem;
+
     line-height: 1.35;
+
   }
+
+
 
   .final-section p {
+
     font-size: 13px;
+
   }
+
+
 
   .secret-section {
+
     padding: 80px 18px;
+
     text-align: center;
+
   }
+
+
 
   .secret-section > h2 {
+
     font-size: 2rem;
+
   }
+
+
 
   .envelope-button {
+
     margin: 40px auto 20px;
+
   }
+
+
 
   .secret-letter {
+
     width: 100%;
+
     max-width: 100%;
+
     margin: 35px auto 0;
+
     padding: 28px 20px;
+
     text-align: left;
+
   }
+
+
 
   .secret-letter h2 {
+
     font-size: 1.7rem;
+
     text-align: center;
+
   }
+
+
 
   .secret-letter p {
+
     font-size: 13px;
+
     line-height: 1.85;
+
   }
+
+
 
   .secret-letter .letter-signature {
+
     font-size: 20px;
+
   }
+
+
 
   footer {
+
     padding: 30px 18px;
+
     text-align: center;
+
+  }
+
+}
+
+
+/* =========================================
+   PHOTO LIGHTBOX
+========================================= */
+
+.photo-card img {
+  cursor: zoom-in;
+}
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 28px;
+  background: rgba(15, 25, 38, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.photo-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.photo-lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: min(82vw, 1200px);
+  max-height: 90vh;
+  margin: 0;
+}
+
+.photo-lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.photo-lightbox__caption {
+  margin-top: 14px;
+  color: #fffefa;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.photo-lightbox__close,
+.photo-lightbox__prev,
+.photo-lightbox__next {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fffefa;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.photo-lightbox__close:hover,
+.photo-lightbox__prev:hover,
+.photo-lightbox__next:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: scale(1.06);
+}
+
+.photo-lightbox__close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  font-size: 30px;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .photo-lightbox {
+    gap: 8px;
+    padding: 64px 10px 24px;
+  }
+
+  .photo-lightbox__figure {
+    max-width: calc(100vw - 104px);
+  }
+
+  .photo-lightbox__image {
+    max-width: 100%;
+    max-height: 72vh;
+  }
+
+  .photo-lightbox__prev,
+  .photo-lightbox__next {
+    width: 38px;
+    height: 38px;
+    font-size: 23px;
+  }
+
+  .photo-lightbox__close {
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .photo-lightbox__caption {
+    font-size: 12px;
   }
 }
 
-/* REMOVE THE PHOTO LIGHTBOX */
-.lightbox {
-  display: none !important;
-}
-
-.photo-card img {
-  cursor: default !important;
+@media (prefers-reduced-motion: reduce) {
+  .photo-lightbox,
+  .photo-lightbox__close,
+  .photo-lightbox__prev,
+  .photo-lightbox__next {
+    transition: none;
+  }
 }
