@@ -44,11 +44,11 @@ if (!letter) {
       <form id="ellyLoginForm">
         <label for="ellyEmail">Email address</label>
         <input id="ellyEmail" type="email" autocomplete="username"
-          placeholder="Your Firebase account email" required>
+          placeholder="Your gmail address Darling :>" required>
 
         <label for="ellyPassword">Password</label>
         <input id="ellyPassword" type="password"
-          autocomplete="current-password" placeholder="Your password" required>
+          autocomplete="current-password" placeholder="Password my love (It's not I love you tristan)" required>
 
         <button type="submit" id="ellyLoginButton">Enter our corner ♡</button>
         <p id="ellyLoginError" class="elly-chat-error" aria-live="polite"></p>
